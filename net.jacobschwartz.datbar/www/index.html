@@ -16,6 +16,7 @@
             <md-button class="menu" hide-gt-sm ng-click="$root.toggleMenu();" >
                 <md-icon md-svg-icon="img/menu-button.svg"></md-icon>
             </md-button>
+            <h3>{{ $root.title }}</h3>
         </md-toolbar>
 
         <div class="container" layout="row" flex>
@@ -32,7 +33,7 @@
                 </md-list>
             </md-sidenav>
 
-            <md-content ng-view flex></md-content>
+            <md-content ng-view flex layout-padding></md-content>
         </div>
 
         <script type="text/javascript" src="cordova.js"></script>

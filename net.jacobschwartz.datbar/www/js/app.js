@@ -8,6 +8,8 @@ angular.module('app', ['ngMaterial', 'ngRoute', ])
 })
 .run(function ($rootScope, $mdSidenav, $location) {
 
+    $rootScope.title = "DatBar";
+
     $rootScope.toggleMenu = function () {
         $mdSidenav('left').toggle();
     };

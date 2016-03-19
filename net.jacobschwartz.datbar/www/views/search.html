@@ -1,1 +1,12 @@
-Search
+<md-input-container md-no-float class="md-block md-icon-right">
+    <label>Search</label>
+    <input type="text" ng-model="search">
+    <md-icon md-svg-icon="img/searching-magnifying-glass.svg"></md-icon>
+</md-input-container>
+
+<md-list>
+    <md-list-item class="md-4-line" ng-repeat="beer in beers | filter:search">
+        <h3>{{ beer.name }}</h3>
+        {{ beer.priceInDKK }}
+    </md-list-item>
+</md-list>
