@@ -10,10 +10,10 @@
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
         <title>DatBar</title>
     </head>
-    <body ng-app="app" layout="column">
+    <body ng-app="app" layout="column" ngCloak>
 
         <md-toolbar layout="row">
-            <md-button class="menu" hide-gt-sm ng-click="$root.toggleMenu();" >
+            <md-button class="menu" hide-gt-sm ng-click="$root.toggleMenu();" aria-label="menu">
                 <md-icon md-svg-icon="img/menu-button.svg"></md-icon>
             </md-button>
             <h3>{{ $root.title }}</h3>
@@ -27,14 +27,17 @@
                     class="md-whiteframe-4dp" >
 
                 <md-list>
-                    <md-list-item class="secondary-button-padding" ng-click="$root.goTo('/')">
-                        Search
+                    <md-list-item class="secondary-button-padding" ng-repeat="entry in $root.menu" ng-click="$root.goTo(entry.link)">
+                        <md-icon md-svg-icon="{{ entry.icon }}"></md-icon>
+                        <p class="md-title">{{ entry.title }}</p>
                     </md-list-item>
                 </md-list>
             </md-sidenav>
 
             <md-content ng-view flex layout-padding></md-content>
         </div>
+
+        <ng-include src="$root.bottomToolbarTemplate"></ng-include>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/lib/angular.min.js"></script>
@@ -44,6 +47,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
         <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/ctrl/searchCtrl.js"></script>
+        <script type="text/javascript" src="js/ctrl/productsCtrl.js"></script>
+        <script type="text/javascript" src="js/ctrl/checkoutCtrl.js"></script>
     </body>
 </html>
