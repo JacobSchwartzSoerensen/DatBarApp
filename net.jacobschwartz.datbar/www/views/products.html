@@ -5,11 +5,11 @@
 </md-input-container>
 
 <md-list>
-    <md-list-item md-card class="md-4-line" ng-repeat="beer in beers"
-                  ng-show="([beer] | filter:search).length > 0">
+    <md-list-item md-card class="md-4-line" ng-repeat="item in $root.products"
+                  ng-show="([item] | filter:search).length > 0">
             <md-card-content>
-                <h3>{{ beer.name }}</h3>
-                {{ beer.priceInDKK }}
+                <h3>{{ item.name }}</h3>
+                {{ item.priceInDKK }}
             </md-card-content>
     </md-list-item>
 </md-list>

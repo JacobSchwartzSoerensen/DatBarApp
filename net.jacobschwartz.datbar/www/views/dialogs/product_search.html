@@ -17,13 +17,15 @@
                              md-autofocus="true"
                              md-item-text="product.name">
                 <md-item-template>
-                    {{ product.name }}
+                    <span md-highlight-text="addProduct.searchQuery">{{ product.name }}</span>
+                    <span style="float: right;">{{ product.priceInDKK }} ,-</span>
                 </md-item-template>
                 <md-not-found>
                     No product was found.
                 </md-not-found>
             </md-autocomplete>
-            <md-button class="md-raised md-primary" ng-click="addProduct(addProduct.selectedProduct); closeDialog();" style="margin-top: 25px;" flex>
+            <md-button class="md-raised md-primary" ng-click="addProduct(addProduct.selectedProduct); closeDialog();"
+                       style="margin-top: 25px;" flex>
                 Add product
             </md-button>
         </div>
