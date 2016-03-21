@@ -1,0 +1,31 @@
+<md-dialog aria-label="product search dialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>Add product</h3>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="closeDialog();">
+                <md-icon md-svg-src="img/close-button.svg"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content" layout="column">
+            <md-autocomplete md-items="product in querySearch(addProduct.searchQuery)"
+                             md-search-text="addProduct.searchQuery"
+                             md-selected-item="addProduct.selectedProduct"
+                             placeholder="Search for product"
+                             md-autofocus="true"
+                             md-item-text="product.name">
+                <md-item-template>
+                    {{ product.name }}
+                </md-item-template>
+                <md-not-found>
+                    No product was found.
+                </md-not-found>
+            </md-autocomplete>
+            <md-button class="md-raised md-primary" ng-click="addProduct(addProduct.selectedProduct); closeDialog();" style="margin-top: 25px;" flex>
+                Add product
+            </md-button>
+        </div>
+    </md-dialog-content>
+</md-dialog>

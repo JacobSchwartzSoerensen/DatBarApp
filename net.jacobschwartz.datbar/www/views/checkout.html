@@ -1,6 +1,6 @@
 <md-list>
-    <md-list-item>
-
+    <md-list-item ng-repeat="item in inCart">
+        {{ item.amount }} x {{ item.name }} <span flex></span> {{ item.amount*item.priceInDKK }},-
     </md-list-item>
 </md-list>
 
