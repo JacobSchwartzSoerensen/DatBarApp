@@ -122,6 +122,10 @@ angular.module('app', ['ngMaterial', 'ngRoute', ])
                     "lastModified": "2015-12-09T21:18:07.459982Z",
                     "link": ""
                 }];
+        }).finally(function () {
+            if($rootScope.onProductsReady){
+                $rootScope.onProductsReady();
+            }
         });
     };
 

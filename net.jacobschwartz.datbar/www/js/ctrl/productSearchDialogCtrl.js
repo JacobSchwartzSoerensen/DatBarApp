@@ -5,7 +5,7 @@ function productSearchDialogCtrl($scope, $mdDialog, $filter, $http, $rootScope) 
     };
 
     $scope.querySearch = function (query) {
-        var result = $filter('filter')($scope.products, query);
+        var result = $filter('filter')($rootScope.products, query);
         return result;
     };
 

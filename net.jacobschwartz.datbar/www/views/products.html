@@ -1,15 +1,13 @@
 <md-input-container md-no-float class="md-block md-icon-right">
     <label>Search</label>
-    <input type="text" ng-model="search">
+    <input type="text" ng-model="search" ng-change="filterProducts(search);" ng-model-options="{ debounce: 100 }">
     <md-icon md-svg-icon="img/searching-magnifying-glass.svg"></md-icon>
 </md-input-container>
 
 <md-list>
-    <md-list-item md-card class="md-4-line" ng-repeat="item in $root.products"
-                  ng-show="([item] | filter:search).length > 0">
-            <md-card-content>
-                <h3>{{ item.name }}</h3>
-                {{ item.priceInDKK }}
-            </md-card-content>
+    <md-list-item class="md-2-line" ng-repeat="item in shownProducts">
+                <span>{{ item.name }}</span>
+                <span flex></span>
+                <span>{{ item.priceInDKK }} ,-</span>
     </md-list-item>
 </md-list>
