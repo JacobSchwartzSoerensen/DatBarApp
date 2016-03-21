@@ -88,6 +88,36 @@ angular.module('app')
         });
     };
 
+    $scope.scanBarcode = function () {
+        cordova.plugins.barcodeScanner.scan(
+            function (result) {
+                var product = $scope.findProductFromBarcode(result.text);
+                if(product){
+                    $scope.addProduct(product);
+                }else{
+                    $rootScope.showError("No product with the scanned barcode was found, try searching for it instead.", "No product found!");
+                }
+                $scope.$apply();
+            },
+            function (error) {
+                $rootScope.showError("Could not scan the barcode, please try again!");
+            }
+        );
+    };
+
+    $scope.findProductFromBarcode = function (barcode) {
+        var product;
+
+        for(var i = 0; i < $scope.products.length; i++){
+            if($scope.products[i].barcode == barcode){
+                product = $scope.products[i];
+                break;
+            }
+        }
+
+        return product;
+    };
+
     $scope.addProduct = function (product) {
 
         if(!product){
