@@ -12,11 +12,16 @@
     </head>
     <body ng-app="app" layout="column" ng-cloak>
 
-        <md-toolbar layout="row">
-            <md-button class="menu" hide-gt-sm ng-click="$root.toggleMenu();" aria-label="menu">
-                <md-icon md-svg-icon="img/menu-button.svg"></md-icon>
-            </md-button>
-            <h3>{{ $root.title }}</h3>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button class="menu" hide-gt-sm ng-click="$root.toggleMenu();" aria-label="menu">
+                    <md-icon md-svg-icon="img/menu-button.svg"></md-icon>
+                </md-button>
+                <span flex></span>
+                <h3>{{ $root.title }}</h3>
+                <span flex></span>
+                <ng-include src="$root.topButtonsTemplate"></ng-include>
+            </div>
         </md-toolbar>
 
         <div class="container" layout="row" flex>
