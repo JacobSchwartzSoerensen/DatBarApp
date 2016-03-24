@@ -49,6 +49,12 @@ angular.module('app')
         return product;
     };
 
+    $scope.changeAmount = function (item, amount) {
+        item.amount += amount;
+
+        $scope.calculateTotal();
+    };
+
     $scope.addProduct = function (product) {
 
         if(!product){
@@ -62,6 +68,13 @@ angular.module('app')
             product.amount = 1;
             $scope.inCart.push(product);
         }
+        $scope.calculateTotal();
+    };
+
+    $scope.removeProduct = function (product) {
+        var index = $scope.inCart.indexOf(product);
+        $scope.inCart.splice(index, 1);
+
         $scope.calculateTotal();
     };
 

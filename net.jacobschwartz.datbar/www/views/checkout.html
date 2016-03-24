@@ -1,6 +1,28 @@
 <md-list style="margin-bottom: 25px;">
     <md-list-item ng-repeat="item in inCart">
-        {{ item.amount }} x {{ item.name }} <span flex></span> {{ item.amount*item.priceInDKK }} ,-
+        <md-card flex>
+            <md-card-content flex>
+                <span>{{ item.amount }} x {{ item.name }}</span>
+                <span style="float:right;">{{ item.amount*item.priceInDKK }} ,-</span>
+            </md-card-content>
+            <md-card-actions>
+                <md-card-icon-actions>
+                    <md-button class="md-icon-button" aria-label="Increase"
+                               ng-click="changeAmount(item, 1);">
+                        <md-icon md-svg-src="img/add-plus-button.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Decrease"
+                               ng-click="changeAmount(item, -1);">
+                        <md-icon md-svg-src="img/horizontal-line-remove-button.svg"></md-icon>
+                    </md-button>
+                    <span flex></span>
+                    <md-button class="md-icon-button md-warn" aria-label="Remove" style="float: right;"
+                               ng-click="removeProduct(item);">
+                        <md-icon md-svg-src="img/close-button.svg"></md-icon>
+                    </md-button>
+                </md-card-icon-actions>
+            </md-card-actions>
+        </md-card>
     </md-list-item>
     <md-list-item ng-if="inCart.length == 0">
         The cart is empty!
@@ -14,10 +36,12 @@
         </md-button>
     </md-fab-trigger>
     <md-fab-actions>
-        <md-button aria-label="search" class="md-fab md-raised md-mini md-primary" ng-click="showProductSearch($event);">
+        <md-button aria-label="search" class="md-fab md-raised md-mini md-primary"
+                   ng-click="showProductSearch($event);">
             <md-icon md-svg-src="img/searching-magnifying-glass.svg" aria-label="search"></md-icon>
         </md-button>
-        <md-button aria-label="barcode" class="md-fab md-raised md-mini md-primary" ng-click="scanBarcode();">
+        <md-button aria-label="barcode" class="md-fab md-raised md-mini md-primary"
+                   ng-click="scanBarcode();">
             <md-icon md-svg-src="img/camera.svg" aria-label="barcode"></md-icon>
         </md-button>
     </md-fab-actions>
